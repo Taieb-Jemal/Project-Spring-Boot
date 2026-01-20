@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Training Center Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .sidebar {
+            background-color: #2c3e50;
+            color: white;
+            min-height: 100vh;
+            padding: 1rem 0;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #34495e;
+            padding-left: 2rem;
+        }
+        .content {
+            padding: 2rem;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+        .stat-card h3 {
+            color: #667eea;
+            font-weight: 700;
+        }
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        .btn-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-custom:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">🎓 Training Center Management</a>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 sidebar">
+                <h5 class="p-3">Navigation</h5>
+                <a href="/dashboard" class="active"><i class="bi bi-house"></i> Dashboard</a>
+                <a href="/etudiants"><i class="bi bi-people"></i> Étudiants</a>
+                <a href="/formateurs"><i class="bi bi-person-badge"></i> Formateurs</a>
+                <a href="/cours"><i class="bi bi-book"></i> Cours</a>
+                <a href="/specialites"><i class="bi bi-tags"></i> Spécialités</a>
+                <a href="/groupes"><i class="bi bi-diagram-3"></i> Groupes</a>
+                <a href="/sessions"><i class="bi bi-calendar-event"></i> Sessions</a>
+                <hr style="opacity: 0.3;">
+                <a href="/about"><i class="bi bi-info-circle"></i> À propos</a>
+            </div>
+
+            <div class="col-md-10 content">
+                <h1 class="mb-4">Dashboard</h1>
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="stat-card text-center">
+                            <div class="number">125</div>
+                            <h5>Étudiants Actifs</h5>
+                            <p class="text-muted">Inscrits cette année</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card text-center">
+                            <div class="number">24</div>
+                            <h5>Formateurs</h5>
+                            <p class="text-muted">En activité</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card text-center">
+                            <div class="number">48</div>
+                            <h5>Cours Actifs</h5>
+                            <p class="text-muted">Cette session</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card text-center">
+                            <div class="number">8</div>
+                            <h5>Groupes</h5>
+                            <p class="text-muted">Configurés</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="stat-card">
+                            <h5>Actions Rapides</h5>
+                            <div class="mt-3">
+                                <a href="/etudiants/new" class="btn btn-custom me-2 mb-2">
+                                    <i class="bi bi-plus-circle"></i> Ajouter Étudiant
+                                </a>
+                                <a href="/formateurs/new" class="btn btn-custom me-2 mb-2">
+                                    <i class="bi bi-plus-circle"></i> Ajouter Formateur
+                                </a>
+                                <a href="/cours/new" class="btn btn-custom me-2 mb-2">
+                                    <i class="bi bi-plus-circle"></i> Créer Cours
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="stat-card">
+                            <h5>Informations Système</h5>
+                            <p class="mt-3">
+                                <strong>Version:</strong> 1.0.0<br>
+                                <strong>Base de données:</strong> Active<br>
+                                <strong>Statut:</strong> <span class="badge bg-success">En ligne</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

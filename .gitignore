@@ -1,0 +1,68 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+.flattened-pom.xml
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.env
+.env.local
+
+# Logs
+logs/
+*.log
+log.txt
+
+# Build
+bin/
+build/
+dist/
+out/
+*.class
+*.jar
+*.war
+*.ear
+
+# Runtime
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Node (if using npm for frontend)
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Gradle
+.gradle/
+gradle/
+
+# Spring Boot
+spring-boot-devtools.properties
+application-dev.properties
+application-prod.properties

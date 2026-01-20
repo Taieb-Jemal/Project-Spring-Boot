@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: training_center_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: trainingcenter
+      MYSQL_USER: trainingcenter
+      MYSQL_PASSWORD: trainingcenter123
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    networks:
+      - training_center_network
+
+  # Spring Boot Application
+  training-center-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: training_center_app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/trainingcenter?useSSL=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: trainingcenter
+      SPRING_DATASOURCE_PASSWORD: trainingcenter123
+      SPRING_PROFILES_ACTIVE: prod
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - training_center_network
+
+volumes:
+  mysql_data:
+
+networks:
+  training_center_network:
+    driver: bridge
