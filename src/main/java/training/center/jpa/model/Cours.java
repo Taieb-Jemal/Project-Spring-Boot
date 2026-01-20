@@ -38,28 +38,6 @@ public class Cours {
     @JoinColumn(name = "formateur_id", nullable = false)
     private Formateur formateur;
 
-    @ManyToOne
-    @JoinColumn(name = "session_id")
-    private Session session;
-
-    @ManyToMany
-    @JoinTable(
-        name = "cours_groupes",
-        joinColumns = @JoinColumn(name = "cours_id"),
-        inverseJoinColumns = @JoinColumn(name = "groupe_id")
-    )
-    @Builder.Default
-    private Set<Groupe> groupes = new HashSet<>();
-
-    @ManyToMany
-    @JoinTable(
-        name = "cours_etudiants",
-        joinColumns = @JoinColumn(name = "cours_id"),
-        inverseJoinColumns = @JoinColumn(name = "etudiant_id")
-    )
-    @Builder.Default
-    private Set<Etudiant> etudiants = new HashSet<>();
-
     @Column(nullable = false)
     private Boolean actif = true;
 

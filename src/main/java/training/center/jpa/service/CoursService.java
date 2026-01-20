@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import training.center.jpa.model.Cours;
 import training.center.jpa.model.Formateur;
-import training.center.jpa.model.Session;
 import training.center.jpa.repository.CoursRepository;
 
 import java.util.List;
@@ -46,21 +45,9 @@ public class CoursService {
         return coursRepository.findByFormateur(formateur);
     }
 
-    public List<Cours> getCoursBySession(Session session) {
-        return coursRepository.findBySession(session);
-    }
-
     public List<Cours> getActiveCours() {
         return coursRepository.findByActif(true);
     }
 
-    public void addEtudiantToCours(Cours cours, training.center.jpa.model.Etudiant etudiant) {
-        cours.getEtudiants().add(etudiant);
-        coursRepository.save(cours);
-    }
 
-    public void removeEtudiantFromCours(Cours cours, training.center.jpa.model.Etudiant etudiant) {
-        cours.getEtudiants().remove(etudiant);
-        coursRepository.save(cours);
-    }
 }

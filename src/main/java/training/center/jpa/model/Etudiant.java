@@ -30,18 +30,7 @@ public class Etudiant {
     private String email;
 
     @Column(nullable = false)
-    private String telephone;
-
-    @Column(nullable = false)
     private LocalDateTime dateInscription;
-
-    @ManyToOne
-    @JoinColumn(name = "groupe_id")
-    private Groupe groupe;
-
-    @ManyToOne
-    @JoinColumn(name = "specialite_id")
-    private Specialite specialite;
 
     @Column(nullable = false)
     private Boolean actif = true;

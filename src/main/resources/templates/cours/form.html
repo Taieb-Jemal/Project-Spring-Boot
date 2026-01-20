@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${cours != null && cours.id != null ? 'Modifier' : 'Ajouter'} + ' Cours'">Ajouter Cours</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .form-container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        .btn-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">🎓 Training Center</a>
+            <a href="/cours" class="text-white text-decoration-none">← Retour à la liste</a>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h1 th:text="${cours != null && cours.id != null ? 'Modifier' : 'Ajouter'} + ' un Cours'">Ajouter un Cours</h1>
+
+        <form th:action="*{id} ? @{/cours/update} : @{/cours}" method="post" th:object="${cours}">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="mb-3">
+                <label for="code" class="form-label">Code *</label>
+                <input type="text" class="form-control" id="code" th:field="*{code}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="titre" class="form-label">Titre *</label>
+                <input type="text" class="form-control" id="titre" th:field="*{titre}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" th:field="*{description}" rows="3"></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="credits" class="form-label">Crédits *</label>
+                        <input type="number" class="form-control" id="credits" th:field="*{credits}" min="1" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="heures" class="form-label">Heures *</label>
+                        <input type="number" class="form-control" id="heures" th:field="*{heures}" min="1" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="formateur" class="form-label">Formateur *</label>
+                <select class="form-control" id="formateurId" name="formateurId" required>
+                    <option value="">-- Sélectionner un formateur --</option>
+                    <option th:each="f : ${formateurs}" th:value="${f.id}" 
+                            th:text="${f.nom} + ' ' + ${f.prenom}"
+                            th:selected="${cours.formateur != null && cours.formateur.id == f.id}">Formateur</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="actif" th:field="*{actif}">
+                    <label class="form-check-label" for="actif">Actif</label>
+                </div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-custom" th:text="${cours != null && cours.id != null ? 'Mettre à jour' : 'Ajouter'}">
+                    Ajouter
+                </button>
+                <a href="/cours" class="btn btn-secondary">Annuler</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

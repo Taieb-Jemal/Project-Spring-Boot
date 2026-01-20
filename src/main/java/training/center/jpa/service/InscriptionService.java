@@ -37,7 +37,6 @@ public class InscriptionService {
                 .build();
         
         Inscription savedInscription = inscriptionRepository.save(inscription);
-        coursService.addEtudiantToCours(cours, etudiant);
         return savedInscription;
     }
 
@@ -45,7 +44,6 @@ public class InscriptionService {
         Optional<Inscription> inscription = inscriptionRepository.findById(id);
         if (inscription.isPresent()) {
             Inscription ins = inscription.get();
-            coursService.removeEtudiantFromCours(ins.getCours(), ins.getEtudiant());
             inscriptionRepository.deleteById(id);
         }
     }

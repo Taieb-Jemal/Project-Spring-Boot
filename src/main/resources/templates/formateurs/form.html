@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${etudiant != null && etudiant.id != null ? 'Modifier' : 'Ajouter'} + ' Étudiant'">Ajouter Étudiant</title>
+    <title th:text="${formateur != null && formateur.id != null ? 'Modifier' : 'Ajouter'} + ' Formateur'">Ajouter Formateur</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         body {
             background-color: #f8f9fa;
@@ -37,20 +35,19 @@
     <nav class="navbar navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">🎓 Training Center</a>
-            <a href="/etudiants" class="text-white text-decoration-none">← Retour à la liste</a>
+            <a href="/formateurs" class="text-white text-decoration-none">← Retour à la liste</a>
         </div>
     </nav>
 
     <div class="form-container">
-        <h1 th:text="${etudiant != null && etudiant.id != null ? 'Modifier' : 'Ajouter'} + ' un Étudiant'">Ajouter un Étudiant</h1>
+        <h1 th:text="${formateur != null && formateur.id != null ? 'Modifier' : 'Ajouter'} + ' un Formateur'">Ajouter un Formateur</h1>
 
-        <form th:action="*{id} ? @{/etudiants/update} : @{/etudiants}" method="post" th:object="${etudiant}">
+        <form th:action="*{id} ? @{/formateurs/update} : @{/formateurs}" method="post" th:object="${formateur}">
             <input type="hidden" th:field="*{id}">
-            <input type="hidden" th:field="*{dateInscription}">
 
             <div class="mb-3">
-                <label for="matricule" class="form-label">Matricule *</label>
-                <input type="text" class="form-control" id="matricule" th:field="*{matricule}" required>
+                <label for="idFormateur" class="form-label">ID Formateur *</label>
+                <input type="text" class="form-control" id="idFormateur" th:field="*{idFormateur}" required>
             </div>
 
             <div class="row">
@@ -74,6 +71,11 @@
             </div>
 
             <div class="mb-3">
+                <label for="specialite" class="form-label">Spécialité *</label>
+                <input type="text" class="form-control" id="specialite" th:field="*{specialite}" required>
+            </div>
+
+            <div class="mb-3">
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="actif" th:field="*{actif}">
                     <label class="form-check-label" for="actif">Actif</label>
@@ -81,10 +83,10 @@
             </div>
 
             <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-custom" th:text="${etudiant != null && etudiant.id != null ? 'Mettre à jour' : 'Ajouter'}">
+                <button type="submit" class="btn btn-custom" th:text="${formateur != null && formateur.id != null ? 'Mettre à jour' : 'Ajouter'}">
                     Ajouter
                 </button>
-                <a href="/etudiants" class="btn btn-secondary">Annuler</a>
+                <a href="/formateurs" class="btn btn-secondary">Annuler</a>
             </div>
         </form>
     </div>

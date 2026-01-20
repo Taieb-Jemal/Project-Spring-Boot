@@ -4,8 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import training.center.jpa.model.Etudiant;
-import training.center.jpa.model.Groupe;
-import training.center.jpa.model.Specialite;
 import training.center.jpa.repository.EtudiantRepository;
 
 import java.util.List;
@@ -44,14 +42,6 @@ public class EtudiantService {
 
     public void deleteEtudiant(Long id) {
         etudiantRepository.deleteById(id);
-    }
-
-    public List<Etudiant> getEtudiantsByGroupe(Groupe groupe) {
-        return etudiantRepository.findByGroupe(groupe);
-    }
-
-    public List<Etudiant> getEtudiantsBySpecialite(Specialite specialite) {
-        return etudiantRepository.findBySpecialite(specialite);
     }
 
     public List<Etudiant> getActiveEtudiants() {

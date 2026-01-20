@@ -30,13 +30,7 @@ public class Formateur {
     private String email;
 
     @Column(nullable = false)
-    private String telephone;
-
-    @Column(nullable = false)
     private String specialite;
-
-    @Column(length = 1000)
-    private String biographie;
 
     @Column(nullable = false)
     private Boolean actif = true;

@@ -77,9 +77,6 @@
                         <td th:text="${etudiant.nom}">Dupont</td>
                         <td th:text="${etudiant.prenom}">Jean</td>
                         <td th:text="${etudiant.email}">jean@example.com</td>
-                        <td th:text="${etudiant.telephone}">+212612345678</td>
-                        <td th:text="${etudiant.groupe?.nom}">-</td>
-                        <td th:text="${etudiant.specialite?.nom}">-</td>
                         <td>
                             <span th:if="${etudiant.actif}" class="badge bg-success">Actif</span>
                             <span th:unless="${etudiant.actif}" class="badge bg-danger">Inactif</span>

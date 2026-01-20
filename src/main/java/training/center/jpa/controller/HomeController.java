@@ -20,4 +20,9 @@ public class HomeController {
     public String about() {
         return "about";
     }
+
+    @GetMapping("/api-docs")
+    public String apiDocs() {
+        return "api-docs";
+    }
 }
