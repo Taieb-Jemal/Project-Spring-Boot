@@ -43,8 +43,9 @@ public class SecurityConfig {
         http
             .csrf().disable()
             .authorizeHttpRequests()
-                .requestMatchers("/", "/index", "/login", "/h2-console/**").permitAll()
-                .requestMatchers("/api/**").permitAll()
+                .requestMatchers("/", "/index", "/login", "/h2-console/**", 
+                                "/api/login", "/api/logout", "/api/user").permitAll()
+                .requestMatchers("/api/**").authenticated()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
